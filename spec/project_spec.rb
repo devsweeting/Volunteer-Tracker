@@ -20,7 +20,7 @@ describe Project do
       expect(project.id).to be_an_instance_of Integer
     end
   end
-  
+
   describe '#==' do
     it 'is the same project if two projects have the same title' do
       project1 = Project.new({:title => 'Teaching Kids to Code', :id => nil})
@@ -29,10 +29,11 @@ describe Project do
     end
   end
 
-  # context '.all' do
-  #   it 'is empty to start' do
-  #     expect(Project.all).to eq []
-  #   end
+  context '.all' do
+    it 'is empty to start' do
+      expect(Project.all).to eq []
+    end
+  end
   #
   #   it 'returns all projects' do
   #     project1 = Project.new({:title => 'Teaching Kids to Code', :id => nil})
