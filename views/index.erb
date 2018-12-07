@@ -21,11 +21,11 @@
       <div class="col-md-4">
         <h2>Available Volunteers:</h2>
         <% if @volunteers.any?() %>
-        <p>Click to view assigned volunteer:</p>
+        <p>Click to view volunteer details:</p>
 
         <ul>
           <% @volunteers.each do |volunteer| %>
-          <li><p><strong>Title:</strong> <a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
+          <li><p><strong>Name:</strong> <a href="/edit_volunteer/<%= volunteer.id %>"><%= volunteer.name %></a></li>
             <% end %>
           </ul>
           <% else %>
@@ -58,6 +58,14 @@
               <div class="form-group">
                 <input type="text" name="name" placeholder="add volunteer name">
               </div>
+
+              <label for="project_id">Select a Project</label>
+              <select id='project_id' name='project_id' type='text'>
+                <% @projects.each() do |project| %>
+                  <option value="<%= project.id %>"> <%= project.title %> </option>
+                <% end %>
+              </select>
+
               <button class="btn btn-success" type="submit" name="button">Add Volunteer</button>
             </form>
           </div>
