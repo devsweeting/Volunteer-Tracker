@@ -68,27 +68,28 @@ end
 # render a volunteer page
 get ('/edit_volunteer/:id') do
   uid = params[:id].to_i
-  @project = Project.find(uid)
-  erb (:edit_project)
+  @volunteer = Volunteer.find(uid)
+  @projects = Project.all
+  erb (:edit_volunteer)
 end
 
-# update a project
-patch ('/edit_project/:id') do
-  title = params.fetch("title")
+# update volunteers info
+patch ('/edit_volunteer/:id') do
+  name = params.fetch("name")
+  project_id = params.fetch("project_id").to_i
   uid = params[:id].to_i
-  @project = Project.find(uid)
-  @project.update({:title => title, :id => nil})
+  @volunteer = Volunteer.find(uid)
+  @volunteer.update({:name => name, :project_id => project_id, :id => nil})
   @projects = Project.all
   @volunteers = Volunteer.all
   erb (:index)
 end
 
 # delete a project
-delete ('/edit_project/:id') do
-  @project = Project.find(params.fetch("id").to_i())
-  @project.delete
+delete ('/edit_volunteer/:id') do
+  @volunteer = Volunteer.find(params.fetch("id").to_i())
+  @volunteer.delete
   @projects = Project.all
   @volunteers = Volunteer.all
-  binding.pry
   erb (:index)
 end

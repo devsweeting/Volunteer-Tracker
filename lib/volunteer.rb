@@ -25,7 +25,7 @@ class Volunteer
     @project_id = attributes.fetch(:project_id)
     @id = self.id()
     DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
-    DB.exec("UPDATE volunteers SET name = '#{@project_id}' WHERE id = #{@id};")
+    DB.exec("UPDATE volunteers SET project_id = '#{@project_id}' WHERE id = #{@id};")
   end
 
   def self.find(id)

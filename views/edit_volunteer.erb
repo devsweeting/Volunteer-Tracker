@@ -1,0 +1,23 @@
+<h1><strong>Volunteer Details:</strong> <code><%= @volunteer.name %></code> </h1>
+
+<div class="well">
+  <form action="/edit_volunteer/<%= @volunteer.id %>" method="post" autocomplete="off">
+    <input name="_method" type="hidden" value="patch">
+    <label for="name">What is the updated volunteer's name?</label>
+    <input type="text" name="name" value="<%= @volunteer.name %>"><br>
+
+    <p>Current assigned volunteer project is <%= @volunteer.project_id %> </p>
+    <label for="project_id">Assign a new project</label>
+    <select id='project_id' name='project_id' type='text'>
+      <% @projects.each() do |project| %>
+        <option value="<%= project.id %>"> <%= project.title %> </option>
+      <% end %>
+    </select>
+    <button type="submit" name="button" class="btn btn-success">Update</button>
+  </form>
+</div>
+
+<form action="/edit_volunteer/<%= @volunteer.id %>" method="post" autocomplete="off">
+  <input name="_method" type="hidden" value="delete">
+<button type="submit" class="btn btn-danger">Delete Volunteer</button>
+<form>
