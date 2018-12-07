@@ -1,5 +1,7 @@
 <h1><strong>Edit Project:</strong> <code><%= @project.title %></code> </h1>
 
+
+
 <div class="well">
   <form action="/edit_project/<%= @project.id %>" method="post" autocomplete="off">
     <input name="_method" type="hidden" value="patch">

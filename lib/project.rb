@@ -47,13 +47,27 @@ class Project
   def ==(another_project)
     self.title.==(another_project.title)
   end
+
+  def projects_volunteer
+    project_volunteers = []
+    volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id};")
+    volunteers.each do |volunteer|
+      name = volunteer.fetch("name")
+      project_id = volunteer,fetch("project_id").to_i
+      project_volunteers.push(Volunteer.w({:name => name, :project_id => project_id}))
+    end
+    project_volunteers
+  end
 end
 
-
-# def grammar (input)
-#   input.split.map(&:capitalize).join(' ')
-# end
-
-# def add_volunteer
-#   @volunteer_id.push(attributes)
-# end
+# <% if @project.volunteers.any? %>
+#   <h3>Here are all the volunteers in this project:</h3>
+#
+#   <ul>
+#     <% @project.volunteers.each do |volunteer| %>
+#       <li><%= volunteer.name %> </li>
+#     <% end %>
+#   </ul>
+#   <% else %>
+#   <p>There are no tasks on this list!</p>
+# <% end %>

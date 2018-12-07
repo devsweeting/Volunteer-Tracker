@@ -48,7 +48,6 @@ delete ('/edit_project/:id') do
   @project.delete
   @projects = Project.all
   @volunteers = Volunteer.all
-  binding.pry
   erb (:index)
 end
 #  ----------------------------------------
@@ -87,9 +86,10 @@ end
 
 # delete a project
 delete ('/edit_volunteer/:id') do
-  @volunteer = Volunteer.find(params.fetch("id").to_i())
+  @volunteer = Volunteer.find(params.fetch("id"))
   @volunteer.delete
   @projects = Project.all
   @volunteers = Volunteer.all
   erb (:index)
 end
+#  ----------------------------------------

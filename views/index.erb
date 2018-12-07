@@ -12,14 +12,14 @@
         <% @projects.each do |project| %>
         <li><p><strong>Title:</strong> <a href="/edit_project/<%= project.id %>"><%= project.title %></a></li>
           <% end %>
-        </ul>
-        <% else %>
-        <p>There are no projects yet!</p>
-        <% end %>
-      </div>
+      </ul>
+      <% else %>
+      <p>There are no projects yet!</p>
+      <% end %>
+    </div>
 
-      <div class="col-md-4">
-        <h2>Available Volunteers:</h2>
+    <div class="col-md-4">
+      <h2>Available Volunteers:</h2>
         <% if @volunteers.any?() %>
         <p>Click to view volunteer details:</p>
 
@@ -27,48 +27,48 @@
           <% @volunteers.each do |volunteer| %>
           <li><p><strong>Name:</strong> <a href="/edit_volunteer/<%= volunteer.id %>"><%= volunteer.name %></a></li>
             <% end %>
-          </ul>
-          <% else %>
-          <p>There are no volunteers yet!</p>
-          <% end %>
-        </div>
-      </div>
+        </ul>
+        <% else %>
+        <p>There are no volunteers yet!</p>
+        <% end %>
+    </div>
+  </div>
 
-      <br>
+  <br>
 
-      <h2>Add a project or new volunteer</h2>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="well">
-            <h4>Submit Project</h4>
-            <form action="/create_project" method="post">
-              <div class="form-group">
-                <input type="text" name="title" placeholder="add project name">
-              </div>
-              <button class="btn btn-success" type="submit" name="button">Add Project</button>
-            </form>
+  <h2>Add a project or new volunteer</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="well">
+        <h4>Submit Project</h4>
+        <form action="/create_project" method="post">
+          <div class="form-group">
+            <label for="title">add project name</label>
+            <input type="text" name="title">
           </div>
-        </div>
-
-
-        <div class="col-md-4">
-          <div class="well">
-            <h4>Add New Volunteer</h4>
-            <form action="/add_volunteer" method="post">
-              <div class="form-group">
-                <input type="text" name="name" placeholder="add volunteer name">
-              </div>
-
-              <label for="project_id">Select a Project</label>
-              <select id='project_id' name='project_id' type='text'>
-                <% @projects.each() do |project| %>
-                  <option value="<%= project.id %>"> <%= project.title %> </option>
-                <% end %>
-              </select>
-
-              <button class="btn btn-success" type="submit" name="button">Add Volunteer</button>
-            </form>
-          </div>
-        </div>
+          <button class="btn btn-success" type="submit" name="button">Add Project</button>
+        </form>
       </div>
     </div>
+
+
+    <div class="col-md-4">
+      <div class="well">
+        <h4>Add New Volunteer</h4>
+        <form action="/add_volunteer" method="post">
+          <div class="form-group">
+          <input type="text" name="name" placeholder="add volunteer name">
+          </div>
+
+          <label for="project_id">Select a Project</label>
+          <select id='project_id' name='project_id' type='text'>
+            <% @projects.each() do |project| %>
+              <option value="<%= project.id %>"> <%= project.title %> </option>
+            <% end %>
+          </select>
+            <button class="btn btn-success" type="submit" name="button">Add Volunteer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

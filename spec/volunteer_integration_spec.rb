@@ -14,7 +14,7 @@ describe 'the project creation path', {:type => :feature} do
   it 'takes the user to the homepage where they can create a project' do
     visit '/'
     fill_in('title', :with => 'Teaching Kids to Code')
-    click_button('Create Project')
+    click_button('Add Project')
     expect(page).to have_content('Teaching Kids to Code')
   end
 end
@@ -27,9 +27,8 @@ describe 'the project update path', {:type => :feature} do
     test_project.save
     visit '/'
     click_link('Teaching Kids to Code')
-    click_link('Edit Project')
     fill_in('title', :with => 'Teaching Ruby to Kids')
-    click_button('Update Project')
+    click_button('Update')
     expect(page).to have_content('Teaching Ruby to Kids')
   end
 end
@@ -41,9 +40,9 @@ describe 'the project delete path', {:type => :feature} do
     test_project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
     test_project.save
     id = test_project.id
-    visit "/projects/#{id}/edit"
+    visit "/edit_project/#{id}"
     click_button('Delete Project')
-    vist '/'
+    visit '/'
     expect(page).not_to have_content("Teaching Kids to Code")
   end
 end
@@ -57,10 +56,11 @@ describe 'the volunteer detail page path', {:type => :feature} do
     project_id = test_project.id.to_i
     test_volunteer = Volunteer.new({:name => 'Jasmine', :project_id => project_id, :id => nil})
     test_volunteer.save
-    visit "/projects/#{project_id}"
-    click_link('Jasmine')
+    id = test_volunteer.id
+    visit "/edit_volunteer/#{id}"
+    # click_link('Jasmine')
     fill_in('name', :with => 'Jane')
-    click_button('Update Volunteer')
+    click_button('Update')
     expect(page).to have_content('Jane')
   end
 end
