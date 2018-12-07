@@ -1,16 +1,14 @@
 require('rspec')
 require('pg')
-require('movie')
-require('patron')
-require('rent')
+require('project')
+require('volunteer')
 require('pry')
 
-DB = PG.connect({:dbname => "moviebox_test"})
+DB = PG.connect({:dbname => "volunteer_tracker"})
 
 RSpec.configure do |config|
   config.after(:each) do
-    DB.exec("DELETE FROM movies *;")
-    DB.exec("DELETE FROM patrons *;")
-    DB.exec("DELETE FROM rent *;")
+    DB.exec("DELETE FROM projects *;")
+    DB.exec("DELETE FROM volunteers *;")
   end
 end
