@@ -1,23 +1,21 @@
-require 'sinatra'
-require 'sinatra/reloader'
-require 'pry'
-also_reload('./lib/**/*.rb')
-require './lib/Mrfluffles'
+require("sinatra")
+require("sinatra/reloader")
+also_reload("lib/**/*.rb")
+require("./lib/project")
+require("./lib/volunteer")
+require("pg")
+require("pry")
+
+DB = PG.connect({:dbname => "volunteer_tracker"})
 
 get ('/') do
-  @list = Mrfluffles.all
+  @projects = Project.all
+  @volunteers = Volunteer.all
+  erb :admin
   erb(:index)
 end
 
-post('/') do
-  name = params["name"]
-  new_cat = Mrfluffles.new(name)
-  new_cat.save
-  @list = Mrfluffles.all
-  erb(:index)
-end
+ # Admin Portal
+get ('/admin') do
 
-get('/details/:id') do
-  @cat = Mrfluffles.find(params[:id])
-  erb(:details)
 end
