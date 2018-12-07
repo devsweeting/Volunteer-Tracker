@@ -11,11 +11,5 @@ DB = PG.connect({:dbname => "volunteer_tracker"})
 get ('/') do
   @projects = Project.all
   @volunteers = Volunteer.all
-  erb :admin
   erb(:index)
-end
-
- # Admin Portal
-get ('/admin') do
-
 end

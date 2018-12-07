@@ -1,60 +1,66 @@
 <h1>Welcome to Volunteer Tracker</h1>
-
-<h2>Available Projects:</h2>
-<div class="row">
-<% if @projects.any?() %>
-<p>Click on a project to see its volunteers:</p>
-
-<ul>
-  <% @projects.each do |project| %>
-  <li><p><strong>Title:</strong> <a href="/projects/<%= project.id() %>"><%= project.name() %></a></li>
-    <% end %>
-  </ul>
-  <% else %>
-  <p>There are no projects yet!</p>
-  <% end %>
-</div>
-
 <br>
 
-<h2>Available Volunteers:</h2>
-<div class="row">
-  <% @volunteers.each do |volunteer| %>
-    <div class="col-md-3">
-      <div class="well">
-        <p><strong>Title:</strong> <%= volunteer.title %></p>
-        <a href="/edit_volunteer/<%= volunteer.id %>"> edit </a>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Available Projects:</h2>
+      <% if @projects.any?() %>
+      <p>Click on a project to see its volunteers:</p>
+
+      <ul>
+        <% @projects.each do |project| %>
+        <li><p><strong>Title:</strong> <a href="/projects/<%= project.id() %>"><%= project.name() %></a></li>
+          <% end %>
+        </ul>
+        <% else %>
+        <p>There are no projects yet!</p>
+        <% end %>
+      </div>
+
+      <div class="col-md-4">
+        <h2>Available Volunteers:</h2>
+        <% if @volunteers.any?() %>
+        <p>Click to view assigned volunteer:</p>
+
+        <ul>
+          <% @volunteers.each do |volunteer| %>
+          <li><p><strong>Title:</strong> <a href="/volunteers/<%= volunteer.id() %>"><%= volunteer.name() %></a></li>
+            <% end %>
+          </ul>
+          <% else %>
+          <p>There are no volunteers yet!</p>
+          <% end %>
+        </div>
+      </div>
+
+      <br>
+
+      <h2>Add a project or new volunteer</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="well">
+            <h4>Submit Project</h4>
+            <form action="/create_project" method="post">
+              <div class="form-group">
+                <input type="text" name="title" placeholder="add project name">
+              </div>
+              <button class="btn btn-success" type="submit" name="button">Add Project</button>
+            </form>
+          </div>
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="well">
+            <h4>Add New Volunteer</h4>
+            <form action="/add_volunteer" method="post">
+              <div class="form-group">
+                <input type="text" name="name" placeholder="add volunteer name">
+              </div>
+              <button class="btn btn-success" type="submit" name="button">Add Volunteer</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  <% end %>
-</div>
-
-<br>
-
-<h2>Add a project</h2>
-<div class="row">
-  <div class="col-md-4">
-    <div class="well">
-      <h4>Submit Project</h4>
-      <form action="/create_project" method="post">
-        <div class="form-group">
-          <input type="text" name="title" placeholder="add project name">
-        </div>
-        <button class="btn btn-success" type="submit" name="button">Add Project</button>
-      </form>
-    </div>
-  </div>
-
-
-  <div class="col-md-4">
-    <div class="well">
-      <h4>Add New Volunteer</h4>
-      <form action="/create_project" method="post">
-        <div class="form-group">
-          <input type="text" name="title" placeholder="add volunteer name">
-        </div>
-        <button class="btn btn-success" type="submit" name="button">Add Volunteer</button>
-      </form>
-    </div>
-  </div>
-  <div>
