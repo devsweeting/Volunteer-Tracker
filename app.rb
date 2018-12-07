@@ -24,19 +24,28 @@ post ('/create_project') do
   erb(:index)
 end
 
-# Get project page
+# render a project page
 get ('/edit_project/:id') do
   uid = params[:id].to_i
   @project = Project.find(uid)
   erb (:edit_project)
 end
 
-# update project
+# update a project
 patch ('/edit_project/:id') do
   title = params.fetch("title")
   uid = params[:id].to_i
   @project = Project.find(uid)
   @project.update({:title => title, :id => nil})
+  @projects = Project.all
+  @volunteers = Volunteer.all
+  erb (:index)
+end
+
+# delete a project
+delete ('/edit_project/:id') do
+  @project = Project.find(params.fetch("id").to_i())
+  @project.delete
   @projects = Project.all
   @volunteers = Volunteer.all
   binding.pry
