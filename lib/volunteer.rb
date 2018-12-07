@@ -33,7 +33,7 @@ class Volunteer
     return_volunteer = nil
     returned_volunteers.each() do |volunteer|
       name = volunteer.fetch("name")
-      project_id = project.fetch("project_id")
+      project_id = volunteer.fetch("project_id")
       id = volunteer.fetch("id").to_i()
       return_volunteer = Volunteer.new({:name => name, :project_id => project_id, :id => id})
     end
