@@ -3,7 +3,7 @@ class Project
   attr_reader(:id)
 
   def initialize(attributes)
-    @title = grammar(attributes.fetch(:title))
+    @title = attributes.fetch(:title)
     @id = attributes.fetch(:id) rescue nil
   end
 
