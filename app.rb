@@ -24,10 +24,22 @@ post ('/create_project') do
   erb(:index)
 end
 
-get ('/create_project/:id') do
+# Get project page
+get ('/edit_project/:id') do
   uid = params[:id].to_i
-  @movie = Movie.find(uid)
+  @project = Project.find(uid)
   erb (:edit_project)
 end
 
+# update project
+patch ('/edit_project/:id') do
+  title = params.fetch("title")
+  uid = params[:id].to_i
+  @project = Project.find(uid)
+  @project.update({:title => title, :id => nil})
+  @projects = Project.all
+  @volunteers = Volunteer.all
+  binding.pry
+  erb (:index)
+end
 #  ----------------------------------------

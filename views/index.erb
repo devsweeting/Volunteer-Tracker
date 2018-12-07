@@ -10,7 +10,7 @@
 
       <ul>
         <% @projects.each do |project| %>
-        <li><p><strong>Title:</strong> <a href="/projects/<%= project.id() %>"><%= project.title %></a></li>
+        <li><p><strong>Title:</strong> <a href="/edit_project/<%= project.id %>"><%= project.title %></a></li>
           <% end %>
         </ul>
         <% else %>
@@ -25,7 +25,7 @@
 
         <ul>
           <% @volunteers.each do |volunteer| %>
-          <li><p><strong>Title:</strong> <a href="/volunteers/<%= volunteer.id() %>"><%= volunteer.name %></a></li>
+          <li><p><strong>Title:</strong> <a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
             <% end %>
           </ul>
           <% else %>
