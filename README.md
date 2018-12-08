@@ -1,42 +1,41 @@
-# _{Application Name}_
+# Volunteer Tracker
 
-#### _{Brief description of application}, {Date of current version}_
+#### Will track volunteers registered for a specific project. Dec 7th, 2018
 
 #### By Devin Sweeting
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+This project is our Week 3 Ruby Independent project at Epicodus. It challenges our basic knowledge of working with databases in PostGres and PSQL.
 
 ## Setup/Installation Requirements
 
-* _Log in to GitHub_
-* _Clone GitHub URL in terminal_
-* _Open the html file in your Web Browser_
-* _Open file in Atom_
+* Log in to GitHub
+* Copy this link to your clipboard (https://github.com/devsweeting/Volunteer-Tracker.git)
+* Clone GitHub URL in terminal
+* Open the html file in your Web Browser or
+* Open file in Atom
+* If PSQL is installed, re-engage database using following commmands:
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+createdb [DATABASE NAME]
+psql [DATABASE_NAME] < database_backup.sql
+createdb -T [DATABASE NAME] [TEST DATABASE NAME]
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+When running integration tests it will reset the projects table and volunteers table losing all data.
 
 ## Support and contact details
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+If you have any questions please contact Devin Sweeting via email, devinsweeting@gmail.com
 
 ## Technologies Used
 
-_Github, Ruby_
-
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+Github, Ruby, PostGres, Sinatra,
 
 ### License
 
-License
-MIT License
-
-Copyright (c) 2018, Ralph Perdomo
+Copyright (c) 2018, Devin S eeting
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

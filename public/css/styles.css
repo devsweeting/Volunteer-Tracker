@@ -1,7 +1,11 @@
 .jumbotron {
-  background-color: red;
+  /* background-color: red; */
 }
 
-a {
+body {
+  /* background-color: red; */
+}
+
+button {
   color: #fff;
 }

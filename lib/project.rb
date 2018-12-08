@@ -59,5 +59,4 @@ class Project
     project_volunteers
   end
 
-
 end
