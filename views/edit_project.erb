@@ -1,5 +1,16 @@
 <h1><strong>Edit Project:</strong> <code><%= @project.title %></code> </h1>
 
+<% if @project.volunteers.any? %>
+  <h3>Here are all the volunteers in this project:</h3>
+
+  <ul>
+    <% @project.volunteers.each do |volunteer| %>
+      <li><%= volunteer.name %> </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no tasks on this list!</p>
+<% end %>
 
 
 <div class="well">

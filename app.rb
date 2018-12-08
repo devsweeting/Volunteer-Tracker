@@ -84,7 +84,7 @@ patch ('/edit_volunteer/:id') do
   erb (:index)
 end
 
-# delete a project
+# delete a volunteer
 delete ('/edit_volunteer/:id') do
   @volunteer = Volunteer.find(params.fetch("id"))
   @volunteer.delete

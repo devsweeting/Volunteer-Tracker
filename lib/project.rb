@@ -48,26 +48,16 @@ class Project
     self.title.==(another_project.title)
   end
 
-  def projects_volunteer
+  def volunteers
     project_volunteers = []
-    volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id};")
-    volunteers.each do |volunteer|
+    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{self.id};")
+    returned_volunteers.each do |volunteer|
       name = volunteer.fetch("name")
-      project_id = volunteer,fetch("project_id").to_i
-      project_volunteers.push(Volunteer.w({:name => name, :project_id => project_id}))
+      project_id = volunteer.fetch("project_id").to_i
+      project_volunteers.push(Volunteer.new({:name => name, :project_id => project_id, :id => nil}))
     end
     project_volunteers
   end
-end
 
-# <% if @project.volunteers.any? %>
-#   <h3>Here are all the volunteers in this project:</h3>
-#
-#   <ul>
-#     <% @project.volunteers.each do |volunteer| %>
-#       <li><%= volunteer.name %> </li>
-#     <% end %>
-#   </ul>
-#   <% else %>
-#   <p>There are no tasks on this list!</p>
-# <% end %>
+
+end
